@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDsL - Premium Automotive Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>MDsL</h2>
+                <span>Automotive</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Premium Automotive Solutions</h1>
+            <p class="hero-subtitle">Your trusted partner for car repair, import/export, spare parts, and maintenance services</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="#contact" class="btn btn-secondary">Get Quote</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="img/CEO.jpg" alt="Professional Car Service">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive automotive solutions for all your needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Car Repair</h3>
+                    <p>Expert repair services for all vehicle makes and models with certified technicians and quality parts.</p>
+                    <ul class="service-features">
+                        <li>Engine diagnostics</li>
+                        <li>Brake system repair</li>
+                        <li>Transmission service</li>
+                        <li>Electrical systems</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Import & Export</h3>
+                    <p>Professional vehicle import and export services with complete documentation and logistics support.</p>
+                    <ul class="service-features">
+                        <li>Custom clearance</li>
+                        <li>Documentation</li>
+                        <li>Shipping coordination</li>
+                        <li>Quality inspection</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Spare Parts</h3>
+                    <p>Genuine and aftermarket spare parts for all vehicle types with competitive pricing and warranty.</p>
+                    <ul class="service-features">
+                        <li>OEM parts</li>
+                        <li>Aftermarket options</li>
+                        <li>Fast delivery</li>
+                        <li>Quality guarantee</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>General Maintenance</h3>
+                    <p>Regular maintenance services to keep your vehicle running smoothly and extend its lifespan.</p>
+                    <ul class="service-features">
+                        <li>Oil changes</li>
+                        <li>Tire rotation</li>
+                        <li>Filter replacement</li>
+                        <li>Preventive care</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About MDsL Automotive</h2>
+                    <p>With over a decade of experience in the automotive industry, MDsL has established itself as a trusted name in car repair, import/export services, spare parts supply, and general maintenance.</p>
+                    <p>Our team of certified professionals is committed to delivering exceptional service quality, using state-of-the-art equipment and genuine parts to ensure your vehicle receives the best care possible.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>1000+</h3>
+                            <p>Cars Serviced</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Import/Export Projects</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support Available</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="img/WhatsApp Image 2025-06-26 at 8.36.41 AM.jpeg" alt="Our Workshop">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work</h2>
+                <p>Take a look at some of our recent projects and services</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="repair">
+                    <img src="img/engine Repair.jpeg" alt="Car Repair">
+                    <div class="gallery-overlay">
+                        <h3>Engine Repair</h3>
+                        <p>Professional engine diagnostics and repair</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="parts">
+                    <img src="img/cars-part-faq2.avif" alt="Spare Parts">
+                    <div class="gallery-overlay">
+                        <h3>Quality Parts</h3>
+                        <p>Genuine and aftermarket spare parts</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="import">
+                    <img src="img/import services of car.jpg" alt="Car Import">
+                    <div class="gallery-overlay">
+                        <h3>Import Services</h3>
+                        <p>Professional vehicle import handling</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="maintenance">
+                    <img src="img/Regular maitenace of cars" alt="Maintenance">
+                    <div class="gallery-overlay">
+                        <h3>Regular Maintenance</h3>
+                        <p>Comprehensive vehicle maintenance</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="repair">
+                    <img src="img/Brake service of cars.jpg" alt="Brake Service">
+                    <div class="gallery-overlay">
+                        <h3>Brake Service</h3>
+                        <p>Expert brake system repair and maintenance</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="export">
+                    <img src="img/Export services.jpg" alt="Car Export">
+                    <div class="gallery-overlay">
+                        <h3>Export Services</h3>
+                        <p>Reliable vehicle export solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch for all your automotive needs</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>Central Area Abuja</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p><br>(+234)08022055925</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>motordiagnticsytemltd@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="">Select Service</option>
+                            <option value="repair">Car Repair</option>
+                            <option value="import">Import Services</option>
+                            <option value="export">Export Services</option>
+                            <option value="parts">Spare Parts</option>
+                            <option value="maintenance">General Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>MDsL</h3>
+                        <span>Automotive</span>
+                    </div>
+                    <p>Your trusted partner for comprehensive automotive solutions. Quality service, competitive prices, and customer satisfaction guaranteed.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Car Repair</a></li>
+                        <li><a href="#services">Import & Export</a></li>
+                        <li><a href="#services">Spare Parts</a></li>
+                        <li><a href="#services">General Maintenance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i>(+234)08022055925</p>
+                        <p><i class="fas fa-envelope"></i>motordiagnticsytemltd@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i>Central Area Abuja</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MDsL Automotive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
