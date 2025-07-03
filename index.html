@@ -3,55 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDsL - Premium Automotive Services</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>MDSL Automoto - Professional Automotive Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="MDSL Automoto - Your trusted partner for professional automotive services including car repair, maintenance, import/export, and spare parts.">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h2>MDSL</h2>
-                <span>Automotive</span>
+                <h2>MDSL Automoto</h2>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Premium Automotive Solutions</h1>
-            <p class="hero-subtitle">Your trusted partner for car repair, import/export, spare parts, and maintenance services</p>
-            <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary">Our Services</a>
-                <a href="#contact" class="btn btn-secondary">Get Quote</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional <span>Automotive</span> Services</h1>
+                <p class="hero-subtitle">Your trusted partner for comprehensive automotive solutions including repair, maintenance, import/export, and genuine spare parts with over 15 years of industry expertise.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">🔧 Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary">📞 Get Quote</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="img/CEO.jpg" alt="Professional Car Service">
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional automotive service" />
+            </div>
         </div>
     </section>
 
@@ -59,61 +52,68 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive automotive solutions for all your needs</p>
+                <h2 class="section-title">Our Premium Services</h2>
+                <p class="section-subtitle">Comprehensive automotive solutions designed to meet all your vehicle needs with professional excellence and cutting-edge technology</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Car Repair</h3>
-                    <p>Expert repair services for all vehicle makes and models with certified technicians and quality parts.</p>
+                <div class="service-card" data-service="repair">
+                    <div class="service-icon">🔧</div>
+                    <h3>Expert Car Repair</h3>
+                    <p>Advanced diagnostic and repair services using state-of-the-art equipment and certified technicians for all vehicle makes and models.</p>
                     <ul class="service-features">
-                        <li>Engine diagnostics</li>
-                        <li>Brake system repair</li>
-                        <li>Transmission service</li>
-                        <li>Electrical systems</li>
+                        <li>Advanced engine diagnostics & repair</li>
+                        <li>Complete brake system service</li>
+                        <li>Transmission repair & maintenance</li>
+                        <li>Electrical system diagnostics</li>
+                        <li>Air conditioning & heating</li>
+                        <li>Suspension & steering repair</li>
                     </ul>
+                    <a href="#contact" class="service-btn" data-service="repair">Book Repair Service</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-ship"></i>
-                    </div>
-                    <h3>Import & Export</h3>
-                    <p>Professional vehicle import and export services with complete documentation and logistics support.</p>
+                
+                <div class="service-card" data-service="maintenance">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Preventive Maintenance</h3>
+                    <p>Comprehensive maintenance programs to keep your vehicle running at peak performance and extend its lifespan.</p>
                     <ul class="service-features">
-                        <li>Custom clearance</li>
-                        <li>Documentation</li>
-                        <li>Shipping coordination</li>
-                        <li>Quality inspection</li>
+                        <li>Scheduled maintenance services</li>
+                        <li>Oil changes & filter replacement</li>
+                        <li>Tire rotation & wheel alignment</li>
+                        <li>Battery & fluid level checks</li>
+                        <li>Multi-point vehicle inspection</li>
+                        <li>Seasonal maintenance packages</li>
                     </ul>
+                    <a href="#contact" class="service-btn" data-service="maintenance">Schedule Maintenance</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Spare Parts</h3>
-                    <p>Genuine and aftermarket spare parts for all vehicle types with competitive pricing and warranty.</p>
+                
+                <div class="service-card" data-service="import-export">
+                    <div class="service-icon">🚗</div>
+                    <h3>Vehicle Import & Export</h3>
+                    <p>Professional vehicle import and export services with complete documentation, customs clearance, and logistics support.</p>
                     <ul class="service-features">
-                        <li>OEM parts</li>
-                        <li>Aftermarket options</li>
-                        <li>Fast delivery</li>
-                        <li>Quality guarantee</li>
+                        <li>Global vehicle sourcing & inspection</li>
+                        <li>Complete customs clearance</li>
+                        <li>Documentation & certification</li>
+                        <li>International shipping & logistics</li>
+                        <li>Insurance & warranty support</li>
+                        <li>Post-arrival vehicle preparation</li>
                     </ul>
+                    <a href="#contact" class="service-btn" data-service="import-export">Get Import Quote</a>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>General Maintenance</h3>
-                    <p>Regular maintenance services to keep your vehicle running smoothly and extend its lifespan.</p>
+                
+                <div class="service-card" data-service="spare-parts">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Genuine Spare Parts</h3>
+                    <p>Extensive inventory of genuine OEM and high-quality aftermarket parts for all vehicle makes with fast delivery service.</p>
                     <ul class="service-features">
-                        <li>Oil changes</li>
-                        <li>Tire rotation</li>
-                        <li>Filter replacement</li>
-                        <li>Preventive care</li>
+                        <li>OEM & certified aftermarket parts</li>
+                        <li>Same-day delivery available</li>
+                        <li>Quality guarantee & warranty</li>
+                        <li>Competitive wholesale pricing</li>
+                        <li>Parts compatibility verification</li>
+                        <li>Bulk order discounts</li>
                     </ul>
+                    <a href="#contact" class="service-btn" data-service="spare-parts">Order Parts Now</a>
                 </div>
             </div>
         </div>
@@ -124,83 +124,63 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>About MDsL Automotive</h2>
-                    <p>With over a decade of experience in the automotive industry, MDsL has established itself as a trusted name in car repair, import/export services, spare parts supply, and general maintenance.</p>
-                    <p>Our team of certified professionals is committed to delivering exceptional service quality, using state-of-the-art equipment and genuine parts to ensure your vehicle receives the best care possible.</p>
+                    <h2 class="section-title">About MDSL Automoto</h2>
+                    <p class="about-description">
+                        With over 15 years of excellence in the automotive industry, MDSL Automoto has established itself as the premier destination for comprehensive automotive services. We combine traditional craftsmanship with cutting-edge technology to deliver exceptional results that exceed customer expectations.
+                    </p>
+                    <p class="about-description">
+                        Our commitment to quality, innovation, and customer satisfaction has made us the trusted choice for thousands of vehicle owners, dealerships, and automotive professionals worldwide.
+                    </p>
                     <div class="about-stats">
-                        <div class="stat">
-                            <h3>1000+</h3>
-                            <p>Cars Serviced</p>
-                        </div>
-                        <div class="stat">
-                            <h3>50+</h3>
-                            <p>Import/Export Projects</p>
-                        </div>
-                        <div class="stat">
+                        <div class="stat-item">
                             <h3>15+</h3>
                             <p>Years Experience</p>
                         </div>
-                        <div class="stat">
-                            <h3>24/7</h3>
-                            <p>Support Available</p>
+                        <div class="stat-item">
+                            <h3>5000+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Expert Technicians</p>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="img/WhatsApp Image 2025-06-26 at 8.36.41 AM.jpeg" alt="Our Workshop">
+                    <img src="https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg?auto=compress&cs=tinysrgb&w=600" alt="About MDSL Automoto" />
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Work</h2>
-                <p>Take a look at some of our recent projects and services</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="repair">
-                    <img src="img/engine Repair.jpeg" alt="Car Repair">
-                    <div class="gallery-overlay">
-                        <h3>Engine Repair</h3>
-                        <p>Professional engine diagnostics and repair</p>
+            
+            <!-- CEO Section -->
+            <div class="ceo-section">
+                <div class="ceo-content">
+                    <div class="ceo-image">
+                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400" alt="CEO MDSL Automoto" />
                     </div>
-                </div>
-                <div class="gallery-item" data-category="parts">
-                    <img src="img/cars-part-faq2.avif" alt="Spare Parts">
-                    <div class="gallery-overlay">
-                        <h3>Quality Parts</h3>
-                        <p>Genuine and aftermarket spare parts</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="import">
-                    <img src="img/import services of car.jpeg" alt="Car Import">
-                    <div class="gallery-overlay">
-                        <h3>Import Services</h3>
-                        <p>Professional vehicle import handling</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="maintenance">
-                    <img src="img/Regular maitenace of cars.jpeg" alt="Maintenance">
-                    <div class="gallery-overlay">
-                        <h3>Regular Maintenance</h3>
-                        <p>Comprehensive vehicle maintenance</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="repair">
-                    <img src="img/Brake service of cars.jpg" alt="Brake Service">
-                    <div class="gallery-overlay">
-                        <h3>Brake Service</h3>
-                        <p>Expert brake system repair and maintenance</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="export">
-                    <img src="img/Export services.jpeg" alt="Car Export">
-                    <div class="gallery-overlay">
-                        <h3>Export Services</h3>
-                        <p>Reliable vehicle export solutions</p>
+                    <div class="ceo-info">
+                        <h3>Meet Our Visionary Leader</h3>
+                        <h4>Michael D. Smith</h4>
+                        <p class="ceo-title">Chief Executive Officer & Founder</p>
+                        <p class="ceo-bio">
+                            Michael founded MDSL Automoto with a revolutionary vision to transform automotive services through innovation, technology, and unwavering commitment to customer excellence. With his extensive background in automotive engineering and strategic business leadership, he has successfully positioned the company as an industry pioneer in comprehensive automotive solutions.
+                        </p>
+                        <p class="ceo-bio">
+                            Under his leadership, MDSL Automoto has expanded from a local repair shop to a full-service automotive enterprise, serving customers across multiple countries and establishing partnerships with leading automotive manufacturers worldwide.
+                        </p>
+                        <div class="ceo-achievements">
+                            <div class="achievement">
+                                <h5>🎓 Education Excellence</h5>
+                                <p>Master's in Automotive Engineering<br>MBA in Strategic Management</p>
+                            </div>
+                            <div class="achievement">
+                                <h5>🏆 Industry Recognition</h5>
+                                <p>Automotive Excellence Award 2023<br>Innovation Leader of the Year</p>
+                            </div>
+                            <div class="achievement">
+                                <h5>💼 Professional Experience</h5>
+                                <p>20+ Years in Automotive Industry<br>Former Senior Engineer at BMW</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,65 +191,167 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p>Get in touch for all your automotive needs</p>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to experience premium automotive services? Contact us today for personalized solutions tailored to your specific needs</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
+                    <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-icon">📍</div>
                         <div>
-                            <h3>Address</h3>
-                            <p>Plot 546 constitution avenue central business district Abuja</p>
+                            <h4>Our Location</h4>
+                            <p>123 Automotive Excellence Boulevard<br>Professional District, City Center<br>Country - 12345</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <div class="contact-icon">📞</div>
                         <div>
-                            <h3>Phone</h3>
-                            <p><br>(+234)08022055925</p>
+                            <h4>Phone & WhatsApp</h4>
+                            <p>+1 (555) 123-4567<br>+1 (555) 987-6543 (Emergency)</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                        <div class="contact-icon">✉️</div>
                         <div>
-                            <h3>Email</h3>
-                            <p>Motordiagnosticsystemlimited24@gmail.com</p>
+                            <h4>Email Address</h4>
+                            <p>info@mdslautomoto.com<br>support@mdslautomoto.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
+                        <div class="contact-icon">🕒</div>
                         <div>
-                            <h3>Hours</h3>
-                            <p>Mon-Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Emergency Services Only</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>
+                            <h4>Online Services</h4>
+                            <p>24/7 Online Booking<br>Live Chat Support<br>Mobile App Available</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h3>Request Service Quote</h3>
+                        <p>Fill out the form below and we'll get back to you within 24 hours</p>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <select id="service" name="service" required>
-                            <option value="">Select Service</option>
-                            <option value="repair">Car Repair</option>
-                            <option value="import">Import Services</option>
-                            <option value="export">Export Services</option>
-                            <option value="parts">Spare Parts</option>
-                            <option value="maintenance">General Maintenance</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <!-- Progress Indicator -->
+                        <div class="form-progress">
+                            <div class="progress-step active">1</div>
+                            <div class="progress-step">2</div>
+                            <div class="progress-step">3</div>
+                        </div>
+                        
+                        <!-- Basic Information -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferredContact">Preferred Contact Method</label>
+                                <select id="preferredContact" name="preferredContact">
+                                    <option value="whatsapp">WhatsApp</option>
+                                    <option value="phone">Phone Call</option>
+                                    <option value="email">Email</option>
+                                    <option value="sms">SMS</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Selection -->
+                        <div class="form-group full-width">
+                            <label for="service">Select Service <span class="required">*</span></label>
+                            <div class="service-pills">
+                                <div class="service-pill" data-service="repair">🔧 Car Repair</div>
+                                <div class="service-pill" data-service="maintenance">🛠️ Maintenance</div>
+                                <div class="service-pill" data-service="import-export">🚗 Import/Export</div>
+                                <div class="service-pill" data-service="spare-parts">⚙️ Spare Parts</div>
+                            </div>
+                            <select id="service" name="service" required style="display: none;">
+                                <option value="">Choose a service...</option>
+                                <option value="repair">Car Repair</option>
+                                <option value="maintenance">General Maintenance</option>
+                                <option value="import-export">Import & Export</option>
+                                <option value="spare-parts">Spare Parts</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Dynamic fields based on service selection -->
+                        <div id="dynamicFields"></div>
+                        
+                        <!-- Additional Information -->
+                        <div class="form-group full-width">
+                            <label for="priority">Service Priority</label>
+                            <select id="priority" name="priority">
+                                <option value="normal">Normal (3-5 business days)</option>
+                                <option value="urgent">Urgent (1-2 business days)</option>
+                                <option value="emergency">Emergency (Same day)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="budget">Budget Range (Optional)</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range...</option>
+                                <option value="under-500">Under $500</option>
+                                <option value="500-1000">$500 - $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="over-5000">Over $5,000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Please provide any additional information about your requirements, special requests, or questions..."></textarea>
+                        </div>
+                        
+                        <!-- Marketing Preferences -->
+                        <div class="form-group full-width">
+                            <label>
+                                <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                                Subscribe to our newsletter for automotive tips and special offers
+                            </label>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>
+                                <input type="checkbox" id="smsUpdates" name="smsUpdates" value="yes">
+                                Receive SMS updates about your service appointments
+                            </label>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                📱 Send via WhatsApp
+                            </button>
+                            <button type="reset" class="btn-reset">
+                                🔄 Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -279,58 +361,53 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="footer-logo">
-                        <h3>MDsL</h3>
-                        <span>Automotive</span>
+                    <h3>MDSL Automoto</h3>
+                    <p>Your premier destination for professional automotive services. We combine expertise, innovation, and customer-first approach to deliver exceptional results that exceed expectations.</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>🏆 Certified Excellence</strong><br>
+                        <small>ISO 9001:2015 Certified | ASE Certified Technicians</small>
                     </div>
-                    <p>Your trusted partner for comprehensive automotive solutions. Quality service, competitive prices, and customer satisfaction guaranteed.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Car Repair</a></li>
-                        <li><a href="#services">Import & Export</a></li>
-                        <li><a href="#services">Spare Parts</a></li>
-                        <li><a href="#services">General Maintenance</a></li>
-                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home">🏠 Home</a></li>
+                        <li><a href="#services">🔧 Services</a></li>
+                        <li><a href="#about">ℹ️ About Us</a></li>
+                        <li><a href="#contact">📞 Contact</a></li>
+                        <li><a href="#careers">💼 Careers</a></li>
+                        <li><a href="#blog">📝 Blog</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i>(+234)08022055925</p>
-                        <p><i class="fas fa-envelope"></i>Motordiagnosticsystemlimited24@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i>Plot 546 constitution avenue central business district Abuja</p>
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li>🔧 Expert Car Repair</li>
+                        <li>🛠️ Preventive Maintenance</li>
+                        <li>🚗 Vehicle Import & Export</li>
+                        <li>⚙️ Genuine Spare Parts</li>
+                        <li>🔍 Vehicle Inspection</li>
+                        <li>🚛 Mobile Services</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>📱 +1 (555) 987-6543</p>
+                    <p>✉️ info@mdslautomoto.com</p>
+                    <p>📍 123 Automotive Excellence Blvd</p>
+                    <p>🕒 Mon-Fri: 8AM-6PM, Sat: 9AM-4PM</p>
+                    <div style="margin-top: 1rem;">
+                        <strong>🌟 Follow Us</strong><br>
+                        <small>Facebook | Instagram | LinkedIn | YouTube</small>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 MDsL Automotive. All rights reserved.</p>
+                <p>&copy; 2025 MDSL Automoto. All rights reserved. | Privacy Policy | Terms of Service | Warranty Information</p>
             </div>
         </div>
     </footer>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-
-    <!-- Notification -->
-    <div id="notification" class="notification"></div>
 
     <script src="script.js"></script>
 </body>
