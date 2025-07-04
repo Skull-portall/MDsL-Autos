@@ -150,7 +150,7 @@ function updateDynamicFields(service) {
                 <div class="location-group">
                     <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup address or use current location" required>
                     <button type="button" class="location-btn" onclick="getLocation('pickup')">
-                        📍 Current Location
+                        📍 Get Location
                     </button>
                 </div>
             </div>
@@ -160,7 +160,7 @@ function updateDynamicFields(service) {
                 <div class="location-group">
                     <input type="text" id="dropLocation" name="dropLocation" placeholder="Enter drop-off address or use current location" required>
                     <button type="button" class="location-btn" onclick="getLocation('drop')">
-                        📍 Current Location
+                        📍 Get Location
                     </button>
                 </div>
             </div>
@@ -391,7 +391,7 @@ function updateDynamicFields(service) {
                 <div class="location-group">
                     <input type="text" id="deliveryAddress" name="deliveryAddress" placeholder="Enter delivery address">
                     <button type="button" class="location-btn" onclick="getLocation('delivery')">
-                        📍 Current Location
+                        📍 Get Location
                     </button>
                 </div>
             </div>
@@ -414,7 +414,7 @@ function updateDynamicFields(service) {
     }, 100);
 }
 
-// Enhanced Geolocation function
+// Enhanced Geolocation function with Map Integration
 function getLocation(type) {
     const button = document.querySelector(`button[onclick="getLocation('${type}')"]`);
     let input;
@@ -432,7 +432,7 @@ function getLocation(type) {
     }
     
     if (!input || !navigator.geolocation) {
-        alert('Geolocation is not supported by this browser.');
+        showLocationError('Geolocation is not supported by this browser.');
         return;
     }
     
@@ -442,31 +442,57 @@ function getLocation(type) {
     
     const options = {
         enableHighAccuracy: true,
-        timeout: 10000,
+        timeout: 15000,
         maximumAge: 300000 // 5 minutes
     };
     
     navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
             
-            // For demo purposes, we'll use a simple format
-            // In production, you'd use a proper geocoding service
-            input.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-            
-            // Optional: Try to get a readable address
-            if ('geocoder' in window) {
-                // This would require a geocoding service API
-                // For now, we'll just use coordinates
+            try {
+                // Get readable address using reverse geocoding
+                const address = await reverseGeocode(lat, lng);
+                input.value = address;
+                
+                // Create map link for MDSL Automoto
+                const mapUrl = `https://www.google.com/maps/dir/${lat},${lng}/MDSL+Automoto`;
+                
+                // Store coordinates for WhatsApp message
+                input.dataset.coordinates = `${lat},${lng}`;
+                input.dataset.mapUrl = mapUrl;
+                
+                button.textContent = '✅ Location Set';
+                button.style.background = 'var(--gradient-success)';
+                
+                // Show success notification
+                showLocationSuccess(`Location set: ${address}`);
+                
+                setTimeout(() => {
+                    button.textContent = '📍 Get Location';
+                    button.style.background = 'var(--gradient-blue)';
+                    button.disabled = false;
+                    button.classList.remove('loading');
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Geocoding error:', error);
+                // Fallback to coordinates
+                input.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                input.dataset.coordinates = `${lat},${lng}`;
+                input.dataset.mapUrl = `https://www.google.com/maps/dir/${lat},${lng}/MDSL+Automoto`;
+                
+                button.textContent = '✅ Coordinates Set';
+                button.style.background = 'var(--gradient-success)';
+                
+                setTimeout(() => {
+                    button.textContent = '📍 Get Location';
+                    button.style.background = 'var(--gradient-blue)';
+                    button.disabled = false;
+                    button.classList.remove('loading');
+                }, 2000);
             }
-            
-            button.textContent = '✅ Location Set';
-            setTimeout(() => {
-                button.textContent = '📍 Current Location';
-                button.disabled = false;
-                button.classList.remove('loading');
-            }, 2000);
         },
         (error) => {
             let errorMessage = 'Unable to retrieve location. ';
@@ -485,13 +511,118 @@ function getLocation(type) {
                     break;
             }
             
-            alert(errorMessage + ' Please enter the address manually.');
-            button.textContent = '📍 Current Location';
+            showLocationError(errorMessage + ' Please enter the address manually.');
+            button.textContent = '📍 Get Location';
             button.disabled = false;
             button.classList.remove('loading');
         },
         options
     );
+}
+
+// Reverse Geocoding Function
+async function reverseGeocode(lat, lng) {
+    try {
+        // Using OpenStreetMap Nominatim API (free alternative to Google)
+        const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`
+        );
+        
+        if (!response.ok) {
+            throw new Error('Geocoding service unavailable');
+        }
+        
+        const data = await response.json();
+        
+        if (data && data.display_name) {
+            return data.display_name;
+        } else {
+            throw new Error('No address found');
+        }
+    } catch (error) {
+        console.error('Reverse geocoding failed:', error);
+        throw error;
+    }
+}
+
+// Location Success Notification
+function showLocationSuccess(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient-success);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow-floating);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+    
+    notification.innerHTML = `
+        <span style="font-size: 1.5rem;">📍</span>
+        <div>
+            <strong>Location Found!</strong><br>
+            <small>${message}</small>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 4000);
+}
+
+// Location Error Notification
+function showLocationError(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient-accent);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow-floating);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+    
+    notification.innerHTML = `
+        <span style="font-size: 1.5rem;">⚠️</span>
+        <div>
+            <strong>Location Error</strong><br>
+            <small>${message}</small>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 6000);
 }
 
 // Enhanced Form submission
@@ -526,7 +657,7 @@ contactForm.addEventListener('submit', (e) => {
     });
     
     if (!isValid) {
-        alert('Please fill in all required fields marked with *');
+        showValidationError('Please fill in all required fields marked with *');
         firstInvalidField.focus();
         return;
     }
@@ -604,8 +735,19 @@ function generateEnhancedWhatsAppMessage(data) {
         message += `${data.issue}\n\n`;
         
         message += `📍 *LOCATION DETAILS*\n`;
+        const pickupInput = document.getElementById('pickupLocation');
+        const dropInput = document.getElementById('dropLocation');
+        
         message += `▫️ Pickup: ${data.pickupLocation}\n`;
+        if (pickupInput && pickupInput.dataset.mapUrl) {
+            message += `🗺️ Pickup Map: ${pickupInput.dataset.mapUrl}\n`;
+        }
+        
         message += `▫️ Drop-off: ${data.dropLocation}\n`;
+        if (dropInput && dropInput.dataset.mapUrl) {
+            message += `🗺️ Drop-off Map: ${dropInput.dataset.mapUrl}\n`;
+        }
+        
         if (data.preferredDate) message += `▫️ Preferred Date: ${data.preferredDate}\n`;
         if (data.preferredTime) message += `▫️ Preferred Time: ${data.preferredTime}\n`;
         message += `\n`;
@@ -664,7 +806,13 @@ function generateEnhancedWhatsAppMessage(data) {
         if (data.deliveryMethod) {
             message += `🚚 *DELIVERY & INSTALLATION*\n`;
             message += `▫️ Delivery: ${data.deliveryMethod}\n`;
-            if (data.deliveryAddress) message += `▫️ Address: ${data.deliveryAddress}\n`;
+            if (data.deliveryAddress) {
+                message += `▫️ Address: ${data.deliveryAddress}\n`;
+                const deliveryInput = document.getElementById('deliveryAddress');
+                if (deliveryInput && deliveryInput.dataset.mapUrl) {
+                    message += `🗺️ Delivery Map: ${deliveryInput.dataset.mapUrl}\n`;
+                }
+            }
             if (data.installationNeeded) message += `▫️ Installation: ${data.installationNeeded}\n`;
             if (data.alternativeParts) message += `▫️ Alternatives: ${data.alternativeParts}\n`;
             message += `\n`;
@@ -689,6 +837,7 @@ function generateEnhancedWhatsAppMessage(data) {
     message += `═══════════════════════════════════\n`;
     message += `📅 *Submitted:* ${new Date().toLocaleString()}\n`;
     message += `🏢 *MDSL Automoto* - Professional Automotive Services\n`;
+    message += `📍 *Find us on Google Maps:* https://maps.google.com/search/MDSL+Automoto\n`;
     message += `\n*Please provide a detailed quote and timeline for this service request. Thank you!*`;
     
     return message;
@@ -704,41 +853,81 @@ function getServiceName(service) {
     return serviceNames[service] || service;
 }
 
-function showSuccessMessage() {
-    // Create success notification
+function showValidationError(message) {
     const notification = document.createElement('div');
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
-        background: linear-gradient(135deg, var(--success-color), #10b981);
+        background: var(--gradient-accent);
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 12px;
-        box-shadow: var(--shadow-xl);
+        box-shadow: var(--shadow-floating);
         z-index: 10000;
-        animation: slideInRight 0.5s ease-out;
-        max-width: 300px;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     `;
     
     notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span style="font-size: 1.5rem;">✅</span>
-            <div>
-                <strong>Message Sent!</strong><br>
-                <small>Redirecting to WhatsApp...</small>
-            </div>
+        <span style="font-size: 1.5rem;">⚠️</span>
+        <div>
+            <strong>Validation Error</strong><br>
+            <small>${message}</small>
         </div>
     `;
     
     document.body.appendChild(notification);
     
-    // Remove notification after 5 seconds
     setTimeout(() => {
-        notification.style.animation = 'slideOutRight 0.5s ease-out';
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
         setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 500);
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
+
+function showSuccessMessage() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--gradient-success);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow-floating);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    `;
+    
+    notification.innerHTML = `
+        <span style="font-size: 1.5rem;">✅</span>
+        <div>
+            <strong>Message Sent!</strong><br>
+            <small>Redirecting to WhatsApp...</small>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
+        }, 300);
     }, 5000);
 }
 
@@ -782,8 +971,8 @@ function initializeAnimations() {
 // Enhanced service card interactions
 document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-12px) scale(1.02)';
-        card.style.transition = 'var(--transition-slow)';
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+        card.style.transition = 'var(--transition-fast)';
     });
     
     card.addEventListener('mouseleave', () => {
@@ -801,7 +990,7 @@ contactForm.addEventListener('reset', () => {
         // Reset field styles
         const allFields = contactForm.querySelectorAll('input, select, textarea');
         allFields.forEach(field => {
-            field.style.borderColor = 'var(--border-color)';
+            field.style.borderColor = 'rgba(245, 158, 11, 0.2)';
             field.style.boxShadow = 'none';
         });
     }, 100);
