@@ -673,7 +673,7 @@ contactForm.addEventListener('submit', (e) => {
     const message = generateEnhancedWhatsAppMessage(data);
     
     // WhatsApp number (replace with actual number)
-    const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
+    const whatsappNumber = '+2349163161616'; // Replace with actual WhatsApp number
     
     // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
