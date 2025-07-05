@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDSL Automoto - Access Portal</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 50%, #2d3748 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: white;
+        }
+        
+        .access-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.6));
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .access-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+        }
+        
+        .access-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.5);
+        }
+        
+        .warning {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="access-container">
+        <div class="logo">🏎️</div>
+        <h1>MDSL Automoto</h1>
+        <p>Administrative Access Portal</p>
+        
+        <a href="dashboard.html" class="access-btn">
+            🔐 Access Admin Dashboard
+        </a>
+        
+        <div class="warning">
+            ⚠️ <strong>Restricted Access</strong><br>
+            This area is for authorized personnel only.<br>
+            All access attempts are logged and monitored.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDSL Automoto - Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="login-logo">
+                    <span class="logo-icon">🏎️</span>
+                    <h1>MDSL Automoto</h1>
+                    <p>Admin Dashboard</p>
+                </div>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter admin username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter admin password">
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <span>🔐 Access Dashboard</span>
+                </button>
+                
+                <div class="login-footer">
+                    <p>🔒 Secure Admin Access Only</p>
+                    <small>Authorized Personnel Only</small>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <span class="logo-icon">🏎️</span>
+                    <h2>MDSL Admin</h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#overview" class="nav-link active" data-section="overview">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">Overview</span>
+                    </a></li>
+                    <li><a href="#orders" class="nav-link" data-section="orders">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">Orders</span>
+                        <span class="notification-badge" id="ordersBadge">3</span>
+                    </a></li>
+                    <li><a href="#customers" class="nav-link" data-section="customers">
+                        <span class="nav-icon">👥</span>
+                        <span class="nav-text">Customers</span>
+                    </a></li>
+                    <li><a href="#income" class="nav-link" data-section="income">
+                        <span class="nav-icon">💰</span>
+                        <span class="nav-text">Income</span>
+                    </a></li>
+                    <li><a href="#inventory" class="nav-link" data-section="inventory">
+                        <span class="nav-icon">📦</span>
+                        <span class="nav-text">Inventory</span>
+                    </a></li>
+                    <li><a href="#analytics" class="nav-link" data-section="analytics">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">Analytics</span>
+                    </a></li>
+                    <li><a href="#notifications" class="nav-link" data-section="notifications">
+                        <span class="nav-icon">🔔</span>
+                        <span class="nav-text">Notifications</span>
+                        <span class="notification-badge" id="notificationsBadge">5</span>
+                    </a></li>
+                    <li><a href="#settings" class="nav-link" data-section="settings">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-text">Settings</span>
+                    </a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">👨‍💼</div>
+                    <div class="user-details">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <span>🚪 Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1 id="pageTitle">Dashboard Overview</h1>
+                    <p id="pageSubtitle">Welcome back! Here's what's happening with your business today.</p>
+                </div>
+                <div class="header-right">
+                    <div class="header-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">$12,450</span>
+                            <span class="stat-label">Today's Revenue</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">23</span>
+                            <span class="stat-label">Active Orders</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="action-btn" id="refreshBtn">
+                            <span>🔄</span>
+                        </button>
+                        <button class="action-btn" id="notificationsBtn">
+                            <span>🔔</span>
+                            <span class="notification-dot"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Overview Section -->
+                <section id="overviewSection" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-content">
+                                <h3>$45,230</h3>
+                                <p>Monthly Revenue</p>
+                                <span class="stat-change positive">+12.5%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">📋</div>
+                            <div class="stat-content">
+                                <h3>156</h3>
+                                <p>Total Orders</p>
+                                <span class="stat-change positive">+8.2%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h3>89</h3>
+                                <p>Active Customers</p>
+                                <span class="stat-change positive">+15.3%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h3>4.8</h3>
+                                <p>Customer Rating</p>
+                                <span class="stat-change positive">+0.2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Recent Orders</h3>
+                                <button class="card-action">View All</button>
+                            </div>
+                            <div class="orders-list">
+                                <div class="order-item">
+                                    <div class="order-info">
+                                        <span class="order-id">#ORD-001</span>
+                                        <span class="order-service">Car Repair</span>
+                                        <span class="order-customer">John Smith</span>
+                                    </div>
+                                    <div class="order-status">
+                                        <span class="status-badge pending">Pending</span>
+                                        <span class="order-amount">$450</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="order-item">
+                                    <div class="order-info">
+                                        <span class="order-id">#ORD-002</span>
+                                        <span class="order-service">Spare Parts</span>
+                                        <span class="order-customer">Sarah Johnson</span>
+                                    </div>
+                                    <div class="order-status">
+                                        <span class="status-badge in-progress">In Progress</span>
+                                        <span class="order-amount">$230</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="order-item">
+                                    <div class="order-info">
+                                        <span class="order-id">#ORD-003</span>
+                                        <span class="order-service">Import/Export</span>
+                                        <span class="order-customer">Mike Wilson</span>
+                                    </div>
+                                    <div class="order-status">
+                                        <span class="status-badge completed">Completed</span>
+                                        <span class="order-amount">$2,500</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Revenue Chart</h3>
+                                <select class="chart-period">
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>Last 3 Months</option>
+                                </select>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="ordersSection" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Order Management</h2>
+                            <p>Track and manage all customer orders</p>
+                        </div>
+                        <div class="section-actions">
+                            <button class="btn-secondary" id="exportOrders">📊 Export</button>
+                            <button class="btn-primary" id="addOrder">➕ New Order</button>
+                        </div>
+                    </div>
+
+                    <div class="filters-bar">
+                        <div class="filter-group">
+                            <select id="statusFilter">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="serviceFilter">
+                                <option value="">All Services</option>
+                                <option value="repair">Car Repair</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="import-export">Import/Export</option>
+                                <option value="spare-parts">Spare Parts</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <input type="search" id="searchOrders" placeholder="Search orders...">
+                        </div>
+                    </div>
+
+                    <div class="orders-table-container">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Orders will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Customers Section -->
+                <section id="customersSection" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Customer Management</h2>
+                            <p>Manage customer relationships and history</p>
+                        </div>
+                        <div class="section-actions">
+                            <button class="btn-secondary" id="exportCustomers">📊 Export</button>
+                            <button class="btn-primary" id="addCustomer">👤 Add Customer</button>
+                        </div>
+                    </div>
+
+                    <div class="customers-grid">
+                        <div class="customer-card">
+                            <div class="customer-avatar">👨</div>
+                            <div class="customer-info">
+                                <h4>John Smith</h4>
+                                <p>john.smith@email.com</p>
+                                <span class="customer-phone">+1 (555) 123-4567</span>
+                            </div>
+                            <div class="customer-stats">
+                                <div class="stat">
+                                    <span class="stat-value">5</span>
+                                    <span class="stat-label">Orders</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">$2,450</span>
+                                    <span class="stat-label">Total Spent</span>
+                                </div>
+                            </div>
+                            <div class="customer-actions">
+                                <button class="btn-small">View Details</button>
+                                <button class="btn-small">Contact</button>
+                            </div>
+                        </div>
+
+                        <div class="customer-card">
+                            <div class="customer-avatar">👩</div>
+                            <div class="customer-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>sarah.j@email.com</p>
+                                <span class="customer-phone">+1 (555) 987-6543</span>
+                            </div>
+                            <div class="customer-stats">
+                                <div class="stat">
+                                    <span class="stat-value">3</span>
+                                    <span class="stat-label">Orders</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">$1,230</span>
+                                    <span class="stat-label">Total Spent</span>
+                                </div>
+                            </div>
+                            <div class="customer-actions">
+                                <button class="btn-small">View Details</button>
+                                <button class="btn-small">Contact</button>
+                            </div>
+                        </div>
+
+                        <div class="customer-card">
+                            <div class="customer-avatar">👨</div>
+                            <div class="customer-info">
+                                <h4>Mike Wilson</h4>
+                                <p>mike.wilson@email.com</p>
+                                <span class="customer-phone">+1 (555) 456-7890</span>
+                            </div>
+                            <div class="customer-stats">
+                                <div class="stat">
+                                    <span class="stat-value">8</span>
+                                    <span class="stat-label">Orders</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">$5,670</span>
+                                    <span class="stat-label">Total Spent</span>
+                                </div>
+                            </div>
+                            <div class="customer-actions">
+                                <button class="btn-small">View Details</button>
+                                <button class="btn-small">Contact</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Income Section -->
+                <section id="incomeSection" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Income Management</h2>
+                            <p>Track revenue, expenses, and profitability</p>
+                        </div>
+                        <div class="section-actions">
+                            <button class="btn-secondary" id="generateReport">📊 Generate Report</button>
+                            <button class="btn-primary" id="addTransaction">💰 Add Transaction</button>
+                        </div>
+                    </div>
+
+                    <div class="income-overview">
+                        <div class="income-card">
+                            <div class="income-header">
+                                <h3>Total Revenue</h3>
+                                <span class="income-period">This Month</span>
+                            </div>
+                            <div class="income-amount">$45,230</div>
+                            <div class="income-change positive">+12.5% from last month</div>
+                        </div>
+
+                        <div class="income-card">
+                            <div class="income-header">
+                                <h3>Total Expenses</h3>
+                                <span class="income-period">This Month</span>
+                            </div>
+                            <div class="income-amount">$18,450</div>
+                            <div class="income-change negative">+5.2% from last month</div>
+                        </div>
+
+                        <div class="income-card">
+                            <div class="income-header">
+                                <h3>Net Profit</h3>
+                                <span class="income-period">This Month</span>
+                            </div>
+                            <div class="income-amount">$26,780</div>
+                            <div class="income-change positive">+18.3% from last month</div>
+                        </div>
+                    </div>
+
+                    <div class="income-breakdown">
+                        <div class="breakdown-card">
+                            <h4>Revenue by Service</h4>
+                            <div class="service-revenue">
+                                <div class="service-item">
+                                    <span class="service-name">Car Repair</span>
+                                    <span class="service-amount">$18,500</span>
+                                    <div class="service-bar">
+                                        <div class="service-progress" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Import/Export</span>
+                                    <span class="service-amount">$15,200</span>
+                                    <div class="service-bar">
+                                        <div class="service-progress" style="width: 53%"></div>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Spare Parts</span>
+                                    <span class="service-amount">$8,730</span>
+                                    <div class="service-bar">
+                                        <div class="service-progress" style="width: 31%"></div>
+                                    </div>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Maintenance</span>
+                                    <span class="service-amount">$2,800</span>
+                                    <div class="service-bar">
+                                        <div class="service-progress" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications Section -->
+                <section id="notificationsSection" class="content-section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <h2>Notifications</h2>
+                            <p>Stay updated with important alerts and messages</p>
+                        </div>
+                        <div class="section-actions">
+                            <button class="btn-secondary" id="markAllRead">✅ Mark All Read</button>
+                            <button class="btn-primary" id="notificationSettings">⚙️ Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="notifications-list">
+                        <div class="notification-item unread">
+                            <div class="notification-icon">🔔</div>
+                            <div class="notification-content">
+                                <h4>New Order Received</h4>
+                                <p>John Smith submitted a car repair request for Toyota Camry 2020</p>
+                                <span class="notification-time">2 minutes ago</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="btn-small">View Order</button>
+                                <button class="btn-small">Mark Read</button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item unread">
+                            <div class="notification-icon">💰</div>
+                            <div class="notification-content">
+                                <h4>Payment Received</h4>
+                                <p>Payment of $450 received for Order #ORD-001</p>
+                                <span class="notification-time">15 minutes ago</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="btn-small">View Payment</button>
+                                <button class="btn-small">Mark Read</button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">📦</div>
+                            <div class="notification-content">
+                                <h4>Low Inventory Alert</h4>
+                                <p>Brake pads inventory is running low (5 units remaining)</p>
+                                <span class="notification-time">1 hour ago</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="btn-small">View Inventory</button>
+                                <button class="btn-small">Reorder</button>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon">⭐</div>
+                            <div class="notification-content">
+                                <h4>New Customer Review</h4>
+                                <p>Sarah Johnson left a 5-star review for your service</p>
+                                <span class="notification-time">3 hours ago</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="btn-small">View Review</button>
+                                <button class="btn-small">Respond</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
