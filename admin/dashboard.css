@@ -268,9 +268,10 @@ body {
 .dashboard {
     display: flex;
     min-height: 100vh;
+    position: relative;
 }
 
-/* Sidebar */
+/* FIXED Mobile Sidebar */
 .sidebar {
     width: 280px;
     background: var(--bg-sidebar);
@@ -282,6 +283,8 @@ body {
     z-index: 1000;
     transition: var(--transition);
     box-shadow: var(--shadow-xl);
+    left: 0;
+    top: 0;
 }
 
 .sidebar-header {
@@ -320,6 +323,12 @@ body {
     border: none;
     cursor: pointer;
     padding: var(--space-sm);
+    border-radius: 8px;
+    transition: var(--transition-fast);
+}
+
+.sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-toggle span {
@@ -328,6 +337,18 @@ body {
     background: var(--text-white);
     border-radius: 1px;
     transition: var(--transition-fast);
+}
+
+.sidebar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sidebar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .sidebar-nav {
@@ -1210,7 +1231,7 @@ body {
     50% { opacity: 0.5; }
 }
 
-/* Responsive Design */
+/* FIXED Mobile Responsive Design */
 @media (max-width: 1200px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
@@ -1222,9 +1243,12 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* FIXED: Mobile Sidebar Visibility */
     .sidebar {
         transform: translateX(-100%);
         width: 100%;
+        max-width: 320px;
+        z-index: 2000;
     }
     
     .sidebar.active {
@@ -1233,14 +1257,24 @@ body {
     
     .main-content {
         margin-left: 0;
+        width: 100%;
     }
     
     .sidebar-toggle {
         display: flex;
+        position: fixed;
+        top: var(--space-lg);
+        left: var(--space-lg);
+        z-index: 2001;
+        background: var(--bg-sidebar);
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+        padding: var(--space-md);
     }
     
     .dashboard-header {
         padding: var(--space-lg);
+        padding-left: 70px; /* Space for hamburger */
     }
     
     .header-right {
@@ -1275,6 +1309,18 @@ body {
     .income-overview {
         grid-template-columns: 1fr;
     }
+    
+    /* Mobile Overlay for Sidebar */
+    .sidebar.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1304,6 +1350,21 @@ body {
     .notification-actions {
         flex-direction: row;
         justify-content: center;
+    }
+    
+    .sidebar-toggle {
+        top: var(--space-md);
+        left: var(--space-md);
+        padding: var(--space-sm);
+    }
+    
+    .dashboard-header {
+        padding: var(--space-md);
+        padding-left: 60px;
+    }
+    
+    .content-wrapper {
+        padding: var(--space-md);
     }
 }
 
